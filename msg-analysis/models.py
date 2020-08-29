@@ -82,6 +82,15 @@ class FBMetadata:
             for react in possible_data['reactions']:
                 reactions.append(FBReaction(self.find_person(react['actor']), react['reaction']))
 
+        if possible_data['share'] is not None:
+            link = None
+            share_text = None
+            if 'link' in possible_data['share']:
+                link = possible_data['share']['link']
+            if 'share_text' in possible_data['share']:
+                share_text = possible_data['share']['share_text']
+            possible_data['share'] = FBShare(link, share_text)
+
         message = FBMessage(sender, timestamp, msg_type,
                             possible_data['content'],
                             possible_data['photos'],
@@ -201,6 +210,12 @@ class FBVideo:
         self.uri = uri
         self.date = datetime.datetime.fromtimestamp(timestamp / 1000.0)
         self.thumbnail = thumbnail
+
+
+class FBShare:
+    def __init__(self, link=None, text=None):
+        self.link = link
+        self.text = text
 
 
 class FBReaction:

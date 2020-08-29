@@ -2,9 +2,12 @@ from models import *
 
 
 def create_metadata(entries=None):
-    metadata = FBMetadata()
+    """
+    :param entries: optional, [string], list of paths to json files
+    :return: object FBMetaData, with filled in entries (if given)
+    """
+    __metadata = FBMetadata()
     if entries is not None:
-        for entry in entries:
-            metadata.load_entry(entry)
-    return metadata
-
+        for __entry in entries:
+            __metadata.from_entry(__entry)
+    return __metadata

@@ -1,5 +1,6 @@
 /*
 /*/
-!.gitignore
+!/.gitignore
+!/LICENSE
 !/msg-analysis
 __pycache__

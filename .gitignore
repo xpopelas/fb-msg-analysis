@@ -2,6 +2,7 @@
 /*/
 !/.gitignore
 !/LICENSE
+!/README.md
 !/msg-analysis
 __pycache__
 playground.py
